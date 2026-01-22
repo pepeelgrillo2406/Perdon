@@ -4,50 +4,51 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Perdón 🐶</title>
+
 <style>
-    body{
-        margin:0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: #ffe6f0;
-        text-align:center;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        height:100vh;
-        flex-direction:column;
-    }
-    h1{
-        font-size: 2rem;
-        margin-bottom:20px;
-    }
-    img{
-        width:260px;
-        border-radius:20px;
-        margin-bottom:20px;
-    }
-    button{
-        padding:10px 20px;
-        font-size:18px;
-        margin:10px;
-        border:none;
-        border-radius:10px;
-        cursor:pointer;
-        transition: all 0.3s ease;
-    }
-    #yesBtn{
-        background-color:#4CAF50;
-        color:white;
-    }
-    #noBtn{
-        background-color:#f44336;
-        color:white;
-    }
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#ffe6f0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    flex-direction:column;
+    text-align:center;
+}
+
+h1{
+    font-size:2rem;
+    margin-bottom:20px;
+}
+
+img{
+    width:280px;
+    border-radius:20px;
+    margin-bottom:20px;
+}
+
+button{
+    padding:12px 25px;
+    font-size:18px;
+    margin:10px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+#yesBtn{ background:#4CAF50; color:white; }
+#noBtn{ background:#f44336; color:white; }
 </style>
 </head>
+
 <body>
 
 <h1 id="message">¿Me perdonás?</h1>
-<img id="pugImage" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg" alt="pug"/>
+<img id="pugImage" src="https://media.tenor.com/7x9K0Q6nYwEAAAAd/pug-sad.gif">
+
 <div>
     <button id="yesBtn">Sí</button>
     <button id="noBtn">No</button>
@@ -56,42 +57,43 @@
 <script>
 let yesSize = 18;
 let phase = 1;
+let noClicks = 0;
 
 const message = document.getElementById("message");
 const pugImage = document.getElementById("pugImage");
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 
-const pugs = {
-    sad1: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Pug_600.jpg",
-    sad2: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Pug_portrait.jpg",
-    happy: "https://upload.wikimedia.org/wikipedia/commons/f/f0/Pug_face.jpg",
-    wedding: "https://upload.wikimedia.org/wikipedia/commons/3/33/Pug_dog.jpg"
-};
+const sadPugs = [
+    "https://media.tenor.com/7x9K0Q6nYwEAAAAd/pug-sad.gif",
+    "https://media.tenor.com/1i8bZpG8s9QAAAAd/pug-crying.gif",
+    "https://media.tenor.com/3xQk8QkR8aEAAAAd/pug-tears.gif",
+    "https://media.tenor.com/0H4xK9zR6O8AAAAd/sad-pug.gif"
+];
 
 noBtn.addEventListener("click", () => {
-    yesSize += 10;
+    yesSize += 12;
     yesBtn.style.fontSize = yesSize + "px";
 
-    if(phase === 1){
-        pugImage.src = pugs.sad1;
-    } else if(phase === 2){
+    noClicks++;
+    pugImage.src = sadPugs[noClicks % sadPugs.length];
+
+    if(phase === 2){
         message.textContent = "poque?";
-        pugImage.src = pugs.sad2;
     }
 });
 
 yesBtn.addEventListener("click", () => {
     if(phase === 1){
         message.textContent = "te amoooo muchooo mi amorch y ahora podemos estar juntos?";
-        pugImage.src = pugs.happy;
+        pugImage.src = "https://media.tenor.com/Z8ezUHZk9O8AAAAd/happy-pug.gif";
         phase = 2;
         yesSize = 18;
         yesBtn.style.fontSize = yesSize + "px";
     }
     else if(phase === 2){
         message.textContent = "Bueno te amo mucho sos mi vida entera Chi? Ah jsjajsjsjak";
-        pugImage.src = pugs.wedding;
+        pugImage.src = "https://media.tenor.com/2roX3XH6c5QAAAAd/pug-love.gif";
         yesBtn.style.display = "none";
         noBtn.style.display = "none";
     }
