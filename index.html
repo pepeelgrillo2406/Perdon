@@ -25,6 +25,7 @@ h1{
 
 img{
     width:280px;
+    height:auto;
     border-radius:20px;
     margin-bottom:20px;
 }
@@ -47,7 +48,7 @@ button{
 <body>
 
 <h1 id="message">¿Me perdonás?</h1>
-<img id="pugImage" src="https://media.tenor.com/7x9K0Q6nYwEAAAAd/pug-sad.gif">
+<img id="pugImage" src="https://placedog.net/500/400?id=1" alt="pug">
 
 <div>
     <button id="yesBtn">Sí</button>
@@ -65,18 +66,21 @@ const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 
 const sadPugs = [
-    "https://media.tenor.com/7x9K0Q6nYwEAAAAd/pug-sad.gif",
-    "https://media.tenor.com/1i8bZpG8s9QAAAAd/pug-crying.gif",
-    "https://media.tenor.com/3xQk8QkR8aEAAAAd/pug-tears.gif",
-    "https://media.tenor.com/0H4xK9zR6O8AAAAd/sad-pug.gif"
+    "https://placedog.net/500/400?id=2",
+    "https://placedog.net/500/400?id=3",
+    "https://placedog.net/500/400?id=4",
+    "https://placedog.net/500/400?id=5"
 ];
+
+const happyPug = "https://placedog.net/500/400?id=6";
+const weddingPugs = "https://placedog.net/500/400?id=8";
 
 noBtn.addEventListener("click", () => {
     yesSize += 12;
     yesBtn.style.fontSize = yesSize + "px";
 
-    noClicks++;
     pugImage.src = sadPugs[noClicks % sadPugs.length];
+    noClicks++;
 
     if(phase === 2){
         message.textContent = "poque?";
@@ -86,14 +90,14 @@ noBtn.addEventListener("click", () => {
 yesBtn.addEventListener("click", () => {
     if(phase === 1){
         message.textContent = "te amoooo muchooo mi amorch y ahora podemos estar juntos?";
-        pugImage.src = "https://media.tenor.com/Z8ezUHZk9O8AAAAd/happy-pug.gif";
+        pugImage.src = happyPug;
         phase = 2;
         yesSize = 18;
         yesBtn.style.fontSize = yesSize + "px";
     }
     else if(phase === 2){
         message.textContent = "Bueno te amo mucho sos mi vida entera Chi? Ah jsjajsjsjak";
-        pugImage.src = "https://media.tenor.com/2roX3XH6c5QAAAAd/pug-love.gif";
+        pugImage.src = weddingPugs;
         yesBtn.style.display = "none";
         noBtn.style.display = "none";
     }
